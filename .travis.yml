@@ -1,0 +1,18 @@
+matrix:
+  include:
+    - language: node_js
+      before_install:
+        - cd ./_react
+      node_js:
+        node
+      cache: yarn
+
+    - language: ruby
+      rvm:
+        - 2.4.0
+      before_script:
+        - bundle exec rake db:drop RAILS_ENV=test
+        - bundle exec rake db:create RAILS_ENV=test
+      services:
+        - postgresql
+      cache: bundler
