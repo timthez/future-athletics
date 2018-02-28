@@ -9,5 +9,12 @@ namespace :start do
   end
 end
 
+namespace :dev do
+  task :setup do
+    exec "bundle install"
+    exec "cd ./_react yarn install"
+  end
+end
+
 desc 'Start development server'
 task :start => 'start:development'
