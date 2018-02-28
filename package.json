@@ -1,0 +1,12 @@
+{
+  "name": "react-deploy",
+  "description":"This is purely for deploy purposes only do not use this for standard dependencies etc. Goto _react/package.json for actual development",
+  "engines": {
+    "node": "6.3.1"
+  },
+  "scripts": {
+    "build": "cd _react && npm install && npm run build && cd ..",
+    "deploy": "cp -a _react/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  }
+}
