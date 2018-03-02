@@ -2,20 +2,9 @@ import React, { Component } from 'react';
 import logo from '../assets/images/panda.svg';
 import './Routes.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import LandingPage from './pages/landing_page/landing_page.js';
 
-// Temporary Component for route
-const Default = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
-    </header>
-    <p className="App-intro">
-      To get started, edit <code>src/Routes.js</code> and save to reload.
-    </p>
-  </div>
-);
 class Routes extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +14,9 @@ class Routes extends Component {
     return (
       <MuiThemeProvider>
         <Router>
-          <Route path="/" component={Default}/>
+          <div>
+            <Route exact path="/" component={LandingPage}/>
+          </div>
         </Router>
       </MuiThemeProvider>
     );
