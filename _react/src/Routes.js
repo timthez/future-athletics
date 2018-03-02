@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './panda.svg';
-import './App.css';
+import './Routes.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -12,11 +12,11 @@ const Default = () => (
       <h1 className="App-title">Welcome to React</h1>
     </header>
     <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
+      To get started, edit <code>src/Routes.js</code> and save to reload.
     </p>
   </div>
 );
-class App extends Component {
+class Routes extends Component {
   constructor(props) {
     super(props);
   }
@@ -32,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Routes;
