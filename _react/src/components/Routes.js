@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './panda.svg';
+import logo from '../assets/images/panda.svg';
 import './Routes.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
