@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from '../assets/images/panda.svg';
-import './Routes.css';
+import './routes.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import SignupPage from './pages/signup_page/signup_page';
+import LoginPage from './pages/login_page/login_page';
 
 // Temporary Component for route
 const Default = () => (
@@ -25,7 +27,11 @@ class Routes extends Component {
     return (
       <MuiThemeProvider>
         <Router>
-          <Route path="/" component={Default}/>
+          <Switch>
+            <Route exact path="/" component={Default}/>
+            <Route exact path="/signup" component={SignupPage}/>
+            <Route exact path="/login" component={LoginPage}/>
+          </Switch>
         </Router>
       </MuiThemeProvider>
     );
