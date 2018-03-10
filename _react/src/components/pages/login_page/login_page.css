@@ -1,0 +1,24 @@
+.login-page{
+	width: 500px;
+	height: 500px;
+	padding: 75px 75px 75px 75px;
+  	text-align: center;
+  	display: inline-block;
+}
+
+.login-user-text{
+	width: 100% !important;
+}
+
+.login-pass-text{
+	width: 100% !important;
+}
+
+.login-login-btn{
+	margin-top: 50px;
+	width: 100% !important;
+}
+
+.login-forgot-btn{
+	margin-top: 50px !important;
+}
