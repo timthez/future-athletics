@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Paper} from 'material-ui';
 import {TextField} from 'material-ui';
 
-class AccountHolderInformation extends Component {
+class BillingInformation extends Component {
 
   render(){
     return(
@@ -10,9 +10,9 @@ class AccountHolderInformation extends Component {
           <TextField className="login-user-text" hintText="Account" floatingLabelText="Account Name"/>
           <br/>
           <TextField className="login-pass-text" hintText="Bank" floatingLabelText="Bank Name"/>
-        </Paper>   
+        </Paper>
       );     
     }
   }
 
-export default AccountHolderInformation;
+export default BillingInformation;
