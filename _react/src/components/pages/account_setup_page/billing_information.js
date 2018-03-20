@@ -4,14 +4,15 @@ import {TextField} from 'material-ui';
 
 class AccountHolderInformation extends Component {
 
-    render(){
-        return(
-            <Paper className="login-page" zDepth={3}>
-            <TextField className="login-user-text" hintText="Account" floatingLabelText="Account Name"/><br/>
-            <TextField className="login-pass-text" hintText="Bank" floatingLabelText="Bank Name"/>
-            </Paper>   
-        );     
+  render(){
+    return(
+        <Paper className="login-page" zDepth={3}>
+          <TextField className="login-user-text" hintText="Account" floatingLabelText="Account Name"/>
+          <br/>
+          <TextField className="login-pass-text" hintText="Bank" floatingLabelText="Bank Name"/>
+        </Paper>   
+      );     
     }
-}
+  }
 
 export default AccountHolderInformation;
