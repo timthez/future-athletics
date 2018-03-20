@@ -33,19 +33,16 @@ class AccountSetupPage extends Component {
     render(){
         return(
             <Layout>
-                <HorizontalLinearStepper></HorizontalLinearStepper>
+                <AccountSetupStepper></AccountSetupStepper>
             </Layout>
         );
     }
 }
 
 /**
- * Horizontal steppers are ideal when the contents of one step depend on an earlier step.
- * Avoid using long step names in horizontal steppers.
- *
- * Linear steppers require users to complete one step in order to move on to the next.
+ * Basic skeletal structure taken from Material UI example
  */
-class HorizontalLinearStepper extends React.Component {
+class AccountSetupStepper extends React.Component {
 
     state = {
       finished: false,
