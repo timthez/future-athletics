@@ -72,8 +72,6 @@ class AccountSetupStepper extends React.Component {
               return <AccountHolderInformation/>;
             case 2:
               return <BillingInformation/>;
-            default:
-              return 'Finishing up...';
           }
     }
   
@@ -109,6 +107,8 @@ class AccountSetupStepper extends React.Component {
                 >
                   Click here
                 </a> to reset the example.
+                <br/>
+                <a href="/login">Click here</a> to return to the login page.
               </p>
             ) : (
               <div>
