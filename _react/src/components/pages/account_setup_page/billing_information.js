@@ -7,19 +7,52 @@ import {MenuItem} from 'material-ui';
 class BillingInformation extends Component {
   state = {
     billingType: 0,
+    bankAccountType: 0
   };
 
   handleChange = (event, index, value) => this.setState({billingType: value});
 
+  handleBankAccountChange = (event, index, value) => this.setState({bankAccountType: value});
+
   getBillingTypeContent(type){
     switch (type){
       case 1 : 
-        return <TextField className="billing-bank-name" hintText="Bank Name" floatingLabelText="Bank Name"/>;
+        return this.getCreditCardFields();
       case 2 :
-        return <TextField className="billing-account-name" hintText="Account Name" floatingLabelText="Account Name"/>;
+        return this.getBankInformationFields();
       default : 
         return "";
     }
+  }
+
+  getCreditCardFields(){
+    return (
+      <div>
+        <TextField className="billing-credit-name" hintText="Account Name" floatingLabelText="Account Name"/>
+        <br/>
+        <TextField className="billing-credit-number" hintText="Credit Card Number" floatingLabelText="Card Number"/>
+      </div>
+    );
+  }
+
+  getBankInformationFields(){
+    return(
+      <div>
+          <SelectField
+          floatingLabelText="Account Type"
+          style={{textAlign: 'left'}}
+          value={this.state.bankAccountType}
+          onChange={this.handleBankAccountChange}
+          >
+            <MenuItem value={1} primaryText="Checking" />
+            <MenuItem value={2} primaryText="Savings" />
+          </SelectField>
+          <br/>
+          <TextField className="billing-bank-routing" hintText="Bank Routing Number" floatingLabelText="Routing Number"/>
+          <br/>
+          <TextField className="billing-bank-account" hintText="Bank Account Number" floatingLabelText="Account Number"/>
+      </div>
+    );
   }
 
   render(){
