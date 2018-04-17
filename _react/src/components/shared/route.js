@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Route as ReactRouterRoute, Redirect } from 'react-router';
-
+import $ from 'jquery';
+let initalLoad = true;
 class Route extends Component{
   render(){
-    var authenticated = true;
-    if(authenticated || this.props.public){
+    if ($.auth.user.signedIn || this.props.public || initalLoad){
+      initalLoad = false;
       return (<ReactRouterRoute {...this.props} />)
     }else{
       return (
