@@ -50,17 +50,21 @@ class Store extends EventEmitter{
         throw new Error(`No data-type defined for ${target.name}`);
     }
 
-    let obj = Object.assign({}, this.state);
-    var ref = obj;
-    name.split('.').forEach((n, i, arr) => {
-      if(i === arr.length - 1){
-        ref[n] = value
-      }else{
-        ref = ref[n];
-      }
-    })
+    this.setState(this._setValuefromFieldPath(this.state, name, value));
+  }
 
-    this.setState(obj);
+  updateFieldFromSelect = (name, type, event, index, value) => {
+    switch (type) {
+      case "number":
+        value = +value; break;
+      case "int":
+        value = Math.trunc(+value); break;
+      case "string":
+        value = value; break;
+      default:
+        throw new Error(`No data-type defined for ${name}`);
+    }
+    this.setState(this._setValuefromFieldPath(this.state, name, value));
   }
 
   setState = (obj) => {
@@ -71,6 +75,20 @@ class Store extends EventEmitter{
   getField = (field) => {
     return this.state[field];
   }
+
+  _setValuefromFieldPath(prevObj,fieldPath, value){
+    let obj = Object.assign({}, prevObj);
+    var ref = obj;
+    fieldPath.split('.').forEach((n, i, arr) => {
+      if (i === arr.length - 1) {
+        ref[n] = value
+      } else {
+        ref = ref[n];
+      }
+    })
+    return obj
+  }
+
 }
 
 export default Store;

@@ -31,7 +31,7 @@ class Routes extends Component {
             <Route exact public path="/" component={LandingPage}/>
             <Route exact path="/signup" component={SignupPage}/>
             <Route exact public path="/login" component={LoginPage}/>
-            <Route exact path="/account-setup" component={AccountSetupPage}/>
+            <Route exact public path="/account-setup" component={AccountSetupPage}/>
             {/* TODO
             <Route path='*' exact={true} component={My404Component} />
             */}
