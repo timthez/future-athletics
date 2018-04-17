@@ -1,6 +1,9 @@
+import styles from './login_page.module.sass';
 import React, { Component } from 'react';
 import UserStore from '../../../stores/user_store';
 import Layout from '../../shared/layout.js';
+import {Paper} from 'material-ui';
+import {TextField, RaisedButton, FlatButton} from 'material-ui';
 
 class LoginPage extends Component {
   store = UserStore.instance();
@@ -21,11 +24,17 @@ class LoginPage extends Component {
   render() {
     return (
       <Layout>
-        Login
-        <input type="string" name="user.username" data-type="string" onChange={this.store.updateFieldFromInput} value={this.state.user.username} ></input>
+        <Paper className={styles['login-page']} zDepth={3}>
+          <TextField hintText="Username or Email" floatingLabelText="Username or Email" fullWidth={true}/>
+          <TextField hintText="Password" floatingLabelText="Password" type="password" fullWidth={true}/><br />
+          <RaisedButton className={styles['login-login-btn']} label="LOGIN" primary={true}/>
+          <FlatButton className={styles['login-forgot-btn']} label="Forgot Password" />
+        </Paper>
       </Layout>
     );
   }
+
+
 }
 
 export default LoginPage;
