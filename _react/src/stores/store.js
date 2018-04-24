@@ -3,6 +3,7 @@ const CHANGE = "change";
 
 class Store extends EventEmitter{
   state = {};
+  errors = [];
 
   static instance(){
     if(!this._instance){
@@ -23,15 +24,6 @@ class Store extends EventEmitter{
     this.emit(CHANGE);
   }
 
-  emitValidationError = (error) => {
-    // TODO
-    this.emit("change", error);
-  }
-
-  emitError = (error) => {
-    this.emit("change", error);
-  }
-
   updateFieldFromInput = (event) => {
     const target = event.target;
     const name = target.name;
@@ -50,7 +42,7 @@ class Store extends EventEmitter{
         throw new Error(`No data-type defined for ${target.name}`);
     }
 
-    this.setState(this._setValuefromFieldPath(this.state, name, value));
+    this.setState(this._setValueFromFieldPath(this.state, name, value));
   }
 
   updateFieldFromSelect = (name, type, event, index, value) => {
@@ -64,7 +56,7 @@ class Store extends EventEmitter{
       default:
         throw new Error(`No data-type defined for ${name}`);
     }
-    this.setState(this._setValuefromFieldPath(this.state, name, value));
+    this.setState(this._setValueFromFieldPath(this.state, name, value));
   }
 
   setState = (obj) => {
@@ -76,7 +68,7 @@ class Store extends EventEmitter{
     return this.state[field];
   }
 
-  _setValuefromFieldPath(prevObj,fieldPath, value){
+  _setValueFromFieldPath(prevObj,fieldPath, value){
     let obj = Object.assign({}, prevObj);
     var ref = obj;
     fieldPath.split('.').forEach((n, i, arr) => {
@@ -87,6 +79,41 @@ class Store extends EventEmitter{
       }
     })
     return obj
+  }
+
+  getValueFromFieldPath(fieldPath, dataType){
+    var ref = Object.assign({}, this.state);
+    fieldPath.split('.').forEach((n, i, arr) =>{
+      ref = ref[n];
+    });
+
+    switch (dataType) {
+      case "number":
+        ref = +ref; break;
+      case "int":
+        ref = Math.trunc(+ref); break;
+      case "string":
+        ref = ref || ""; break;
+      default:
+        throw new Error(`No data-type defined for ${fieldPath}`);
+    }
+    return ref;
+  }
+
+  getErrors(fieldPath){
+    let error = this.errors.find(e => e.name === fieldPath);
+    if(error){
+      return error.message;
+    }
+  }
+
+  addError(name, message){
+    this.errors.push({name, message});
+  }
+
+  clearErrors(){
+    this.errors = [];
+    this.emitChange();
   }
 
 }

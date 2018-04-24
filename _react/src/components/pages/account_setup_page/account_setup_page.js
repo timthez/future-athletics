@@ -17,19 +17,19 @@ import {
 class AccountSetupPage extends Component {
     store = UserStore.instance();
     state = this.store.state;
-  
+
     componentDidMount(){
       this.store.subscribe(this.onUserStoreChange);
     }
-  
+
     componentWillUnmount() {
       this.store.unsubscribeAll();
     }
-  
+
     onUserStoreChange = () => {
       this.setState(this.store.state);
     }
-    
+
     render(){
         return(
             <Layout>
@@ -48,7 +48,7 @@ class AccountSetupStepper extends React.Component {
       finished: false,
       stepIndex: 0,
     };
-  
+
     handleNext = () => {
       const {stepIndex} = this.state;
       this.setState({
@@ -56,14 +56,14 @@ class AccountSetupStepper extends React.Component {
         finished: stepIndex >= 2,
       });
     };
-  
+
     handlePrev = () => {
       const {stepIndex} = this.state;
       if (stepIndex > 0) {
         this.setState({stepIndex: stepIndex - 1});
       }
     };
-  
+
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
@@ -74,11 +74,11 @@ class AccountSetupStepper extends React.Component {
               return <BillingInformation/>;
           }
     }
-  
+
     render() {
       const {finished, stepIndex} = this.state;
       const contentStyle = {margin: '0 16px'};
-  
+
       return (
         <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
           <Stepper activeStep={stepIndex}>
@@ -93,11 +93,11 @@ class AccountSetupStepper extends React.Component {
             </Step>
           </Stepper>
           <div>
-              
+
           </div>
           <div style={contentStyle}>
             {finished ? (
-              <p>
+              <div>
                 <a
                   href="#"
                   onClick={(event) => {
@@ -109,10 +109,10 @@ class AccountSetupStepper extends React.Component {
                 </a> to reset the example.
                 <br/>
                 <a href="/login">Click here</a> to return to the login page.
-              </p>
+              </div>
             ) : (
               <div>
-                <p>{this.getStepContent(stepIndex)}</p>
+                <div>{this.getStepContent(stepIndex)}</div>
                 <div style={{marginTop: 12}}>
                   <FlatButton
                     label="Back"
