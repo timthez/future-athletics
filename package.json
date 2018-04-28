@@ -5,7 +5,7 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "build": "cd _react && npm install && npm run build && cd ..",
+    "build": "cd _react && npm install && npm run build && npm rebuild node-sass && cd ..",
     "deploy": "cp -a _react/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   }
