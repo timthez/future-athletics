@@ -11,8 +11,7 @@ end
 
 namespace :dev do
   task :setup do
-    exec "bundle install"
-    exec "cd ./_react yarn install"
+    exec "bundle install && cd ./_react && yarn install"
   end
 end
 
