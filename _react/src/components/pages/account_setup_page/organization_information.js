@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { TextField, SelectField, Paper, MenuItem} from 'material-ui';
 import OrganizationStore from '../../../stores/organization_store'
 import Binder from '../../shared/binder'
-
+// import Constants from '../../../../../app/constants'
+import _ from 'lodash';
 class OrgainizationInformation extends Component {
 
   render(){
@@ -18,11 +19,7 @@ class OrgainizationInformation extends Component {
             name="organization.type"
             data-type="string"
           >
-            <MenuItem value="UNIVERSITY" primaryText="University" />
-            <MenuItem value="MIDDLE_SCHOOL" primaryText="Middle School" />
-            <MenuItem value="HIGH_SCHOOL" primaryText="High School" />
-            <MenuItem value="RUNNING_CLUB" primaryText="Running Club" />
-            <MenuItem value="PROFESSIONAL" primaryText="Professional" />
+            {_(global.Organization.types).map((k,v) => <MenuItem key={v} value={v} primaryText={k} />).value()}
           </SelectField>
           <br/>
           <TextField className="account-org-address1-text" hintText="Address" floatingLabelText="Address Line 1"
